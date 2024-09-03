@@ -1,6 +1,6 @@
 import React from 'react';
 import { Instagram } from 'lucide-react';
-
+import instagramlink from '../constants';
 
 const Footer = () => {
     return (
@@ -22,7 +22,7 @@ const Footer = () => {
           {/* Social media links section */}
           <div className="flex items-center justify-end">
             <a
-              href="https://www.instagram.com/yourprofile"
+              href={instagramlink}
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-700 dark:text-gray-300 hover:text-blue-500 transition-colors"

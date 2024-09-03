@@ -5,7 +5,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Qazaq Association",
-  description: "Qazaq Association is dedicated to bringing together members of the community to celebrate, support, and promote Kazakh culture, traditions, and values.",
+  description: "Qazaq Association is a community of Qazaq people living in Houston, Texas.",
 };
 
 export default function RootLayout({ children }) {

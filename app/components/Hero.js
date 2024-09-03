@@ -26,7 +26,7 @@ const Hero = () => {
           {headerText}
         </h1>
         <p className="text-lg lg:text-xl">
-          Welcome to our community. Explore and connect with us!
+          Welcome to our community. Explore and connect with qazaqs in Houston!
         </p>
         <button
           className="flex items-center justify-center my-5 hover:bg-gray-300 dark:hover:bg-gray-800 bg-transparent border px-10 py-2 rounded-2xl hover:bg-opacity-20 transition-colors duration-200 whitespace-nowrap">

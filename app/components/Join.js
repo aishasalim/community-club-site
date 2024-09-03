@@ -1,39 +1,42 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { collection, addDoc } from 'firebase/firestore';
+import { db } from '../../firebase';  // Import the Firestore instance from your firebase.js file
 
 const Join = () => {
   const [email, setEmail] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (email) {
-      // Replace this URL with your actual success link
-      window.location.href = '/success'; 
+      try {
+        // Add the email to the Firestore 'emails' collection
+        await addDoc(collection(db, 'emails'), { email });
+        // Redirect to the success page
+        window.location.href = '/success'; 
+      } catch (error) {
+        console.error('Error adding email to Firestore: ', error);
+      }
     }
   };
 
-    // Use the useInView hook to track the visibility of the component
-    const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
+  // Use the useInView hook to track the visibility of the component
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
 
-    // Animation variants for framer-motion
-    const variants = {
-      hidden: { opacity: 0, y: 20 },
-      visible: { opacity: 1, y: 0 }
-    };
-  
-    const slideUpEffect = {
-      hidden: { opacity: 0, y: 50 },
-      visible: {
-          opacity: 1,
-          y: 0,
-          transition: {
-              delay: 0.2,
-              duration: 0.6,
-              ease: 'easeInOut',
-          },
+  // Animation variants for framer-motion
+  const slideUpEffect = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: 0.2,
+        duration: 0.6,
+        ease: 'easeInOut',
       },
-    };
+    },
+  };
 
   return (
     <section id="join" className="pt-[5em] lg:pt-[10em]">
@@ -48,7 +51,7 @@ const Join = () => {
           <h2 className="text-2xl font-bold text-center mb-6">Join the Community</h2>
           <form
             onSubmit={handleSubmit}
-            className="max-w-md mx-5 sm:mx-auto flex flex-col items-center space-y-4"  // Added mx-5 and adjusted max width
+            className="max-w-md mx-5 sm:mx-auto flex flex-col items-center space-y-4"
           >
             <input
               type="email"
@@ -68,7 +71,6 @@ const Join = () => {
         </div>
       </motion.div>
     </section>
-
   );
 };
 
