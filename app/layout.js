@@ -4,8 +4,9 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Qazaq Association",
-  description: "Qazaq Association is a community of Qazaq people living in Houston, Texas.",
+  title: "Texas Qazaq Foundation",
+  description:
+    "Texas Qazaq Foundation is a community of Qazaq people based in Houston, Texas.",
 };
 
 export default function RootLayout({ children }) {
@@ -21,4 +22,3 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
-
